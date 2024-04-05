@@ -13,10 +13,18 @@ provider:
 functions:
   get-person:
     handler: src/infrastructure/http/controllers/person-controller.getPerson
-    events: # The events that trigger this function
+    events:
       - http:
           path: swapi/person/{id}
           method: get
+
+  get-persons:
+    handler: src/infrastructure/http/controllers/person-controller.getPersonsDb
+    events:
+      - http:
+          path: swapi/persons
+          method: get
+
   save-person:
     handler: src/infrastructure/http/controllers/person-controller.savePerson
     events:

@@ -1,18 +1,11 @@
 import mysql from "mysql";
+import { MYSQL } from "./utils/db-constants";
 
 const connection = mysql.createConnection({
-  host: "your-database-host",
-  user: "your-database-user",
-  password: "your-database-password",
-  database: "your-database-name",
-});
-
-connection.connect((err) => {
-  if (err) {
-    console.error("Error connecting to database:", err);
-    return;
-  }
-  console.log("Connected to database");
+  host: MYSQL.HOST,
+  user: MYSQL.USER,
+  password: MYSQL.PASSWORD,
+  database: MYSQL.DATABASE,
 });
 
 export default connection;
