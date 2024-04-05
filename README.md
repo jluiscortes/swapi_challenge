@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 -- Create a new database
 CREATE DATABASE IF NOT EXISTS swapi;
 
@@ -311,4 +310,3 @@ Body:
   }
 }
 ```
->>>>>>> 80bf615e2e8e0e3df2846dab9f0886a46aa42e75
