@@ -6,7 +6,7 @@ import {
   MessagesHTTP,
   TEXT,
 } from "./utils/controller-constants";
-import { PersonSwapiTranslate } from "@src/domain/person/utils/person-model";
+import { PersonSwapiTranslate } from "../../../domain/person/utils/person-model";
 
 export const getPerson = async (
   _event: APIGatewayProxyEvent
