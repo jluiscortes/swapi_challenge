@@ -1,7 +1,7 @@
 import i18next from "i18next";
 import i18nextFSBackend from "i18next-node-fs-backend";
 import path from "path";
-import { PATH_FILE_CONFIG } from "./constants/config-constants";
+import { PATH_FILE_CONFIG } from "./utils/config-constants";
 
 export const build = async (): Promise<void> => {
   const pathFiles = path.join(__dirname, PATH_FILE_CONFIG);
