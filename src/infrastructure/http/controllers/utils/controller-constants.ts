@@ -14,3 +14,7 @@ export const buildResponse = (
     body,
   };
 };
+
+export const TEXT = {
+  EMPTY: "",
+};
