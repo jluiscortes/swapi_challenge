@@ -1,0 +1,6 @@
+### get swapi get 
+GET https://swapi.dev/api/people/1/
+
+
+###  get local swapi
+GET http://localhost:3000/dev/swapi/hello

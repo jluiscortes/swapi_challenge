@@ -1,0 +1,30 @@
+service: swapi
+
+package:
+  include:
+    - locales/**
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-west-2
+
+# functions
+functions:
+  get-person:
+    handler: src/infrastructure/http/controllers/person-controller.getPerson
+    events: # The events that trigger this function
+      - http:
+          path: swapi/person/{id}
+          method: get
+  save-person:
+    handler: src/infrastructure/http/controllers/person-controller.savePerson
+    events:
+      - http:
+          path: swapi/person
+          method: post
+
+# Serverless plugins
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
