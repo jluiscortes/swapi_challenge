@@ -1,10 +1,4 @@
-//import connection from "@src/infrastructure/database/db";
-
-import {
-  Person,
-  PersonSwapi,
-  PersonSwapiTranslate,
-} from "@src/domain/person/utils/person-model";
+import { Person, PersonSwapi } from "../../domain/person/utils/person-model";
 import i18next from "i18next";
 import * as Translate from "../../infrastructure/config/i18n";
 import { splitData, splitDataToDb, URL_SWAPI } from "./utils/person-constanst";
@@ -14,7 +8,7 @@ import {
   GET_PERSON_BY_ID,
   INSERT_PERSON,
 } from "../../infrastructure/database/utils/db-constants";
-import { MySQLResponse } from "@src/infrastructure/database/utils/db-interfaces";
+import { MySQLResponse } from "../../infrastructure/database/utils/db-interfaces";
 
 class PersonRepository {
   getUserById(id: number): Person {
