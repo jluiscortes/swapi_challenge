@@ -2,16 +2,15 @@ import {
   getPerson,
   getPersonsDb,
 } from "../../src/infrastructure/http/controllers/person-controller";
-import PersonRepository from "../../src/domain/person/person-repository";
-import { MessagesHTTP } from "../../src/infrastructure/http/controllers/utils/controller-constants";
+import PersonRepository from "../../src/domain/entites/person/person-repository";
+import { MessagesHTTP } from "../../src/application/controllers/utils/controller-constants";
 import {
   mockGetPersonPayload,
   mockSwapiKeysTranslate,
 } from "./mocks/swapi-person-mock";
 import { StatusCodes } from "http-status-codes";
 import { APIGatewayProxyEvent } from "aws-lambda";
-import { PersonSwapiTranslate } from "../../src/domain/person/utils/person-model";
-import { json } from "stream/consumers";
+import { PersonSwapiTranslate } from "../../src/domain/entites/person/utils/person-model";
 
 describe("getPerson", () => {
   it("should return the translated person data when successful", async () => {

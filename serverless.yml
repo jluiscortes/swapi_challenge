@@ -1,8 +1,9 @@
 service: swapi
 
 package:
+  ## include all files from src
   include:
-    - locales/**
+    - src/**
 
 provider:
   name: aws

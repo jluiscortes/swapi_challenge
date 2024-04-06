@@ -1,14 +1,14 @@
-import { Person, PersonSwapi } from "../../domain/person/utils/person-model";
+import { Person, PersonSwapi } from "../../entites/person/utils/person-model";
 import i18next from "i18next";
-import * as Translate from "../../infrastructure/config/i18n";
+import * as Translate from "../../../infrastructure/config/i18n";
 import { splitData, splitDataToDb, URL_SWAPI } from "./utils/person-constanst";
-import connectionMysql from "../../infrastructure/database/db";
+import connectionMysql from "../../../infrastructure/database/db";
 import {
   GET_PERSONS,
   GET_PERSON_BY_ID,
   INSERT_PERSON,
-} from "../../infrastructure/database/utils/db-constants";
-import { MySQLResponse } from "../../infrastructure/database/utils/db-interfaces";
+} from "../../../infrastructure/database/utils/db-constants";
+import { QueryResult } from "mysql2";
 
 class PersonRepository {
   getUserById(id: number): Person {
@@ -42,26 +42,31 @@ class PersonRepository {
       });
     });
   }
-  async getPersons(): Promise<PersonSwapi[]> {
+  async getPersons(): Promise<PersonSwapi[] | null> {
     return new Promise((resolve, reject) => {
-      connectionMysql.query(GET_PERSONS, (err, result) => {
-        if (err) reject(err);
+      connectionMysql.query(GET_PERSONS, (err, result: PersonSwapi[]) => {
+        if (err) {
+          reject(err);
+        }
         const data = result.map((person) => splitData(person));
         resolve(data);
       });
     });
   }
-  async savePerson(person: PersonSwapi): Promise<MySQLResponse> {
+  async savePerson(person: PersonSwapi): Promise<QueryResult> {
     const personToInsert = splitDataToDb(person);
-    console.log("PERSON", person);
     return new Promise((resolve, reject) => {
-      connectionMysql.query(INSERT_PERSON, personToInsert, (err, result) => {
-        if (err) {
-          console.log("ERROR", err);
-          reject(err);
+      connectionMysql.query(
+        INSERT_PERSON,
+        personToInsert,
+        (err, result: QueryResult) => {
+          if (err) {
+            console.log("ERROR", err);
+            reject(err);
+          }
+          resolve(result);
         }
-        resolve(result);
-      });
+      );
     });
   }
 }
