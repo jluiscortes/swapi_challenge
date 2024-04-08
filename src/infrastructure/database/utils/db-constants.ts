@@ -14,7 +14,7 @@ export const MYSQL = {
   PORT: parseInt(mySQLSecrets.MYSQL_PORT || DEFAULT_PORT),
   PASSWORD: mySQLSecrets.MYSQL_PASSWORD,
   DATABASE: mySQLSecrets.MYSQL_DATABASE,
-  CA_CERT: MYSQL_SSL_CA,
+  CA_CERTIFICATE: MYSQL_SSL_CA,
 };
 export const NODE_DB_ENV = mySQLSecrets.NODE_ENV;
 export const GET_PERSON_BY_ID = "SELECT * FROM person WHERE id = ?";

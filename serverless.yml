@@ -12,22 +12,22 @@ provider:
 
 # functions
 functions:
-  get-person:
-    handler: src/infrastructure/http/controllers/person-controller.getPerson
+  search-person:
+    handler: src/infrastructure/http/controllers/person-controller.searchPerson
     events:
       - http:
           path: swapi/person/{id}
           method: get
 
-  get-persons:
-    handler: src/infrastructure/http/controllers/person-controller.getPersonsDb
+  search-persons:
+    handler: src/infrastructure/http/controllers/person-controller.searchPersons
     events:
       - http:
           path: swapi/persons
           method: get
 
-  save-person:
-    handler: src/infrastructure/http/controllers/person-controller.savePerson
+  create-person:
+    handler: src/infrastructure/http/controllers/person-controller.createPerson
     events:
       - http:
           path: swapi/person

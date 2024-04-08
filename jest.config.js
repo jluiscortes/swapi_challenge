@@ -24,6 +24,4 @@ module.exports = {
     doNotFake: ["nextTick"],
     timerLimit: 10000,
   },
-
-  setupFilesAfterEnv: ["./tests/controllers/person-controller.spec.ts"],
 };

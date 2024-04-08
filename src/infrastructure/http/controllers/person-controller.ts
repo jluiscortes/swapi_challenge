@@ -1,22 +1,20 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
-import PersonController from "../../../application/controllers/person-controller";
+import * as PersonApplicationController from "../../../application/controllers/person-controller";
 
-const controllerPerson = new PersonController();
-
-export const getPerson = async (
+export const searchPerson = async (
   _event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
-  return controllerPerson.getPerson(_event);
+  return PersonApplicationController.searchPerson(_event);
 };
 
-export const getPersonsDb = async (
+export const searchPersons = async (
   _event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
-  return controllerPerson.getPersonsDb(_event);
+  return PersonApplicationController.searchPersonsDb(_event);
 };
 
-export const savePerson = async (
+export const createPerson = async (
   _event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
-  return controllerPerson.savePerson(_event);
+  return PersonApplicationController.createPerson(_event);
 };
