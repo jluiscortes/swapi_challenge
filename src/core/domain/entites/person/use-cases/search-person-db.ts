@@ -5,6 +5,7 @@ export class SearchPerson {
   constructor(personRepository: PersonRepository) {
     this.personRepository = personRepository;
   }
+
   async execute(id: number): Promise<PersonSwapi> {
     return this.personRepository.getPersonById(id);
   }

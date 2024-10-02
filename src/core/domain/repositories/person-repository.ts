@@ -25,16 +25,17 @@ export class PersonRepository {
       .then((data) => data)
       .catch((error) => console.error(error));
   }
+
   async translate(data: PersonSwapi | null): Promise<PersonSwapiTranslate> {
     await Translate.build();
     const translatedData: PersonSwapiTranslate = {} as PersonSwapiTranslate;
-    if (!data) {
-      return translatedData;
-    }
+    if (!data) return translatedData;
+
     Object.keys(data).forEach(async (key) => {
       const keyTranslate = i18next.t(key);
       translatedData[keyTranslate] = data[key];
     });
+
     return translatedData;
   }
   async getPersonById(id: number): Promise<PersonSwapi> {
@@ -50,9 +51,8 @@ export class PersonRepository {
   async getPersons(): Promise<PersonSwapi[] | null> {
     return new Promise((resolve, reject) => {
       connectionMysql.query(GET_PERSONS, (err, result: PersonSwapi[]) => {
-        if (err) {
-          reject(err);
-        }
+        if (err) reject(err);
+
         const data = result.map((person) => splitData(person));
         resolve(data);
       });
@@ -65,10 +65,8 @@ export class PersonRepository {
         INSERT_PERSON,
         personToInsert,
         (err, result: QueryResult) => {
-          if (err) {
-            console.log("ERROR", err);
-            reject(err);
-          }
+          if (err) reject(err);
+
           resolve(result);
         }
       );

@@ -6,6 +6,7 @@ export class CreatePerson {
   constructor(personRepository: PersonRepository) {
     this.personRepository = personRepository;
   }
+
   async execute(person: PersonSwapi): Promise<QueryResult> {
     return this.personRepository.createPerson(person);
   }

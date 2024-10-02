@@ -2,9 +2,11 @@ import * as mySQLSecrets from "./db-secrets";
 import fs from "fs";
 import path from "path";
 
+// change the path to the CA certificate if needed
 const pathToCA = path.join(
   __dirname,
-  mySQLSecrets.CA_CERT_PATH_TEMPORARY || ""
+  mySQLSecrets.CA_CERT_PATH_TEMPORARY ||
+    "../files/ca-certificate-release-0.0.1.crt"
 );
 export const MYSQL_SSL_CA = fs.readFileSync(pathToCA || "");
 export const DEFAULT_PORT = "3306";

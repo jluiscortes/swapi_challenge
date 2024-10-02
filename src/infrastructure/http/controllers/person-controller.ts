@@ -3,18 +3,15 @@ import * as PersonApplicationController from "../../../application/controllers/p
 
 export const searchPerson = async (
   _event: APIGatewayProxyEvent
-): Promise<APIGatewayProxyResult> => {
-  return PersonApplicationController.searchPerson(_event);
-};
+): Promise<APIGatewayProxyResult> =>
+  PersonApplicationController.searchPerson(_event);
 
 export const searchPersons = async (
   _event: APIGatewayProxyEvent
-): Promise<APIGatewayProxyResult> => {
-  return PersonApplicationController.searchPersonsDb(_event);
-};
+): Promise<APIGatewayProxyResult> =>
+  PersonApplicationController.searchPersonsDb(_event);
 
 export const createPerson = async (
   _event: APIGatewayProxyEvent
-): Promise<APIGatewayProxyResult> => {
-  return PersonApplicationController.createPerson(_event);
-};
+): Promise<APIGatewayProxyResult> =>
+  PersonApplicationController.createPerson(_event);

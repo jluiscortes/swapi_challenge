@@ -5,6 +5,7 @@ export class TranslatePerson {
   constructor(personRepository: PersonRepository) {
     this.personRepository = personRepository;
   }
+
   async execute(
     personSwapi: PersonSwapi | null
   ): Promise<PersonSwapiTranslate | null> {

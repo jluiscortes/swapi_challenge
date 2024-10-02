@@ -4,17 +4,13 @@ export const URL_SWAPI = "https://swapi.dev/api/people/";
 export const ELEMENTS_TO_ARRAY = ["films", "species", "vehicles", "starships"];
 export const splitData = (person: PersonSwapi) => {
   Object.keys(person).forEach(async (key) => {
-    if (ELEMENTS_TO_ARRAY.includes(key)) {
-      person[key] = person[key].split(",");
-    }
+    if (ELEMENTS_TO_ARRAY.includes(key)) person[key] = person[key].split(",");
   });
   return person;
 };
 export const splitDataToDb = (person: PersonSwapi) => {
   Object.keys(person).forEach(async (key) => {
-    if (ELEMENTS_TO_ARRAY.includes(key)) {
-      person[key] = person[key].join(",");
-    }
+    if (ELEMENTS_TO_ARRAY.includes(key)) person[key] = person[key].join(",");
   });
   return personToArraySplit(person);
 };
